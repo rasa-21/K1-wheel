@@ -1,0 +1,344 @@
+/* === Общие стили приложения === */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: url('../img/bg.jpg') no-repeat right center fixed;
+    background-size: cover;
+    color: #111;
+    font-family: "Tektur", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+
+/* === Общий контейнер === */
+
+.app {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* === Заголовок === */
+
+.app__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.app__logo {
+    width: 400px;
+    object-fit: contain;
+    box-shadow: 0 0 10px #0003;
+    border-radius: 8px;
+}
+
+.app__title {
+    font-size: 2.5rem;
+    color: #111;
+    text-shadow: 0 0 8px #fff5;
+    margin: 0;
+}
+
+
+/* === Основная раскладка === */
+
+.app__main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: nowrap;
+    /* Колесо и управление рядом */
+}
+
+
+/* Левая колонка — колесо */
+
+.app__wheel-column {
+    flex: 1 1 500px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+/* Правая колонка — контролы и участники */
+
+.app__controls-column {
+    flex: 1 1 350px;
+    text-align: left;
+}
+
+
+/* === Контролы === */
+
+.app__controls {
+    margin-bottom: 40px;
+}
+
+.control {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.control__input {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 2px solid #aa8800;
+    background: #fff8dc;
+    color: #222;
+    font-size: 1rem;
+    outline: none;
+    width: 180px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.control__input:focus {
+    border-color: #cc8800;
+    box-shadow: 0 0 8px #cc8800aa;
+}
+
+.control__btn {
+    font-family: "Tektur", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(145deg, #37bbe4, #51a9b4);
+    color: #ffeb3b;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8);
+}
+
+.control__btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px #0003;
+}
+
+.control__btn:focus-visible {
+    outline: 3px solid #ffeb3b;
+    outline-offset: 2px;
+}
+
+
+/* === Колесо фортуны === */
+
+.wheel {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.wheel__canvas {
+    border-radius: 50%;
+    box-shadow: 0 0 20px #0004, 0 0 30px #fff3;
+    background: radial-gradient(circle at center, #fff9c4 0%, #ffeb3b 100%);
+}
+
+.wheel__controls {
+    margin-top: 15px;
+}
+
+.wheel__btn {
+    font-family: "Tektur", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #2d6779, #10e3ff);
+    color: #ffeb3b;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.wheel__btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px #0005;
+}
+
+.wheel__btn:disabled,
+.wheel__btn--disabled {
+    background: #bbb;
+    color: #777;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.wheel__warning {
+    color: #cc0000;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+
+/* === Участники === */
+
+.participants {
+    margin-top: 20px;
+}
+
+.participants__label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.participants__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-start;
+    max-width: 350px;
+}
+
+.participants__chip {
+    padding: 6px 14px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #8a0f0f, #fa992a);
+    color: #ffeb3b;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 5px #0003;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.participants__chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px #0005;
+}
+
+
+/* === Попап победителя === */
+
+.winner-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 235, 59, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+    cursor: pointer;
+}
+
+.winner-popup__content {
+    background: linear-gradient(135deg, #222, #444);
+    color: #ffeb3b;
+    padding: 50px 80px;
+    font-size: 3rem;
+    font-weight: bold;
+    border-radius: 20px;
+    box-shadow: 0 0 40px #0004, 0 0 60px #fff3;
+    text-align: center;
+    animation: popIn 0.3s ease-out;
+}
+
+
+/* === Анимации === */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    80% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* === Адаптивность === */
+
+
+/* Средние экраны (<1200px) — убираем фон */
+
+@media (max-width: 1200px) {
+    body {
+        background: #eec40b;
+        /* только желтый фон */
+    }
+}
+
+
+/* Малые экраны (<900px) */
+
+@media (max-width: 900px) {
+    .app__main {
+        flex-direction: column;
+        align-items: center;
+    }
+    .control {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .control__input {
+        width: 100%;
+    }
+    .wheel__canvas {
+        width: 100%;
+        height: auto;
+    }
+    .participants__chips {
+        justify-content: center;
+    }
+}
+
+
+/* Очень маленькие экраны (<600px) */
+
+@media (max-width: 600px) {
+    .app__logo {
+        width: 250px;
+    }
+    .app__title {
+        font-size: 2rem;
+    }
+    .winner-popup__content {
+        padding: 30px 40px;
+        font-size: 2rem;
+    }
+    .wheel__btn {
+        font-size: 20px;
+        padding: 10px 20px;
+    }
+}
